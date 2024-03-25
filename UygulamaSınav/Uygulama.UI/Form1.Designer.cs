@@ -60,6 +60,7 @@
 			txtbxKullaniciAdi.PlaceholderText = "Kullanıcı Adı";
 			txtbxKullaniciAdi.Size = new Size(194, 23);
 			txtbxKullaniciAdi.TabIndex = 2;
+			txtbxKullaniciAdi.TextChanged += txtbxKullaniciAdi_TextChanged;
 			// 
 			// txtbxKullaniciSifre
 			// 
