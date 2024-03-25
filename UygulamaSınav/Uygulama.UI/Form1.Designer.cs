@@ -28,12 +28,66 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "Form1";
+			btngiris = new Button();
+			btnkayitol = new Button();
+			txtbxKullaniciAdi = new TextBox();
+			txtbxKullaniciSifre = new TextBox();
+			SuspendLayout();
+			// 
+			// btngiris
+			// 
+			btngiris.Location = new Point(292, 288);
+			btngiris.Name = "btngiris";
+			btngiris.Size = new Size(75, 23);
+			btngiris.TabIndex = 0;
+			btngiris.Text = "Gİriş Yap";
+			btngiris.UseVisualStyleBackColor = true;
+			// 
+			// btnkayitol
+			// 
+			btnkayitol.Location = new Point(411, 288);
+			btnkayitol.Name = "btnkayitol";
+			btnkayitol.Size = new Size(75, 23);
+			btnkayitol.TabIndex = 1;
+			btnkayitol.Text = "Kayıt Ol";
+			btnkayitol.UseVisualStyleBackColor = true;
+			// 
+			// txtbxKullaniciAdi
+			// 
+			txtbxKullaniciAdi.Location = new Point(292, 172);
+			txtbxKullaniciAdi.Name = "txtbxKullaniciAdi";
+			txtbxKullaniciAdi.PlaceholderText = "Kullanıcı Adı";
+			txtbxKullaniciAdi.Size = new Size(194, 23);
+			txtbxKullaniciAdi.TabIndex = 2;
+			// 
+			// txtbxKullaniciSifre
+			// 
+			txtbxKullaniciSifre.Location = new Point(292, 232);
+			txtbxKullaniciSifre.Name = "txtbxKullaniciSifre";
+			txtbxKullaniciSifre.PlaceholderText = "Şifre";
+			txtbxKullaniciSifre.Size = new Size(194, 23);
+			txtbxKullaniciSifre.TabIndex = 3;
+			// 
+			// Form1
+			// 
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			ClientSize = new Size(800, 450);
+			Controls.Add(txtbxKullaniciSifre);
+			Controls.Add(txtbxKullaniciAdi);
+			Controls.Add(btnkayitol);
+			Controls.Add(btngiris);
+			Name = "Form1";
+			Text = "Form1";
+			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
+
+		private Button btngiris;
+		private Button btnkayitol;
+		private TextBox txtbxKullaniciAdi;
+		private TextBox txtbxKullaniciSifre;
 	}
 }
