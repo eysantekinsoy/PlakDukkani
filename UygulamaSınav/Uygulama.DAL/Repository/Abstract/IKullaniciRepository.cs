@@ -7,8 +7,9 @@ using Uygulama.DAL.Entities;
 
 namespace Uygulama.DAL.Repository.Abstract
 {
-    public interface IAlbumRepository
+    public interface IKullaniciRepository
     {
-        Album FindUser(string AlbumAdi);
+        Kullanici FindUser(string KullaniciAdi);
+        public Kullanici FindUser(string KullaniciAdi, string Password);
     }
 }

@@ -13,7 +13,7 @@ namespace Uygulama.DAL.Entities
         public string AlbumAdi { get ; set; }
         public DateTime AlbumCikisTarihi { get; set; }
         public int SanatciId { get; set; }
-        public Album album { get; set; }
+        public Sanatci  Sanatci { get; set; }
         public int Fiyati { get; set; }
         public decimal indirim { get; set; }
         public SatisDurum SatisDurum { get; set; }

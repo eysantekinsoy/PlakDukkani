@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Uygulama.BL.Manager.Concrete;
 using Uygulama.BL.Models;
+using Uygulama.DAL.Entities;
+using Uygulama.DAL.Enums;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Uygulama.UI
 {
@@ -22,17 +25,19 @@ namespace Uygulama.UI
         AlbumModel albumModel;
         AlbumModel selectedAlbum;
         SanatciModel selectedSanatci;
+        DateTime selectedDate;
 
         public Anasafa()
         {
-            dgvAlbümler.DataSource = albumManager.GetAll();
-            cmbSanatci.DataSource = sanatciManager.GetAll();
+
+
+
             InitializeComponent();
         }
 
         private void txtİndirim_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.Handled = !char.IsDigit(e.KeyChar))
+            if (e.Handled = !char.IsDigit(e.KeyChar)) ;
             {
                 txtİndirim.Text = "";
             }
@@ -54,8 +59,8 @@ namespace Uygulama.UI
                     album.Fiyati = int.Parse(txtFiyat.Text);
                     album.indirim = decimal.Parse(txtİndirim.Text);
                     album.AlbumAdi = txtAdi.Text;
-
-
+                    album.AlbumCikisTarihi = selectedDate;
+                    RefreshCmbSanatci();
                     KeyValuePair<int, string> selectedSanatci = (KeyValuePair<int, string>)cmbSanatci.SelectedItem;
                     album.SanatciId = selectedSanatci.Key;
                     albumManager.Add(album);
@@ -63,11 +68,12 @@ namespace Uygulama.UI
                     AlbumTextReset();
                     dgvAlbümler.DataSource = albumManager.GetAll();
                     selectedAlbum = null;
+                    dgvListe();
                 }
             }
             else
             {
-                msgAlreadyUsed("YEMEK");
+                msgAlreadyUsed("Album");
                 selectedAlbum = null;
             }
         }
@@ -112,16 +118,18 @@ namespace Uygulama.UI
                     selectedAlbum.Fiyati = int.Parse(txtFiyat.Text);
                     selectedAlbum.AlbumAdi = txtAdi.Text;
                     selectedAlbum.indirim = decimal.Parse(txtİndirim.Text);
+                    selectedAlbum.AlbumCikisTarihi = selectedDate;
                     albumManager.Update(selectedAlbum);
                     msgUpdateSuccessed("Album");
                     AlbumTextReset();
                     dgvAlbümler.DataSource = albumManager.GetAll();
                     selectedAlbum = null;
+                    dgvListe();
                 }
             }
             else
             {
-                msgAlreadyUsed("YEMEK");
+                msgAlreadyUsed("Album");
                 selectedAlbum = null;
             }
         }
@@ -150,17 +158,73 @@ namespace Uygulama.UI
         {
             if (selectedAlbum == null)
             {
-                msgForRemove("YEMEK");
+                msgForRemove("Album");
                 return;
             }
             else
             {
                 albumManager.Remove(selectedAlbum);
-                msgRemoveSuccessed("Yemek");
+                msgRemoveSuccessed("Album");
                 AlbumTextReset();
                 dgvAlbümler.DataSource = albumManager.GetAll();
                 selectedAlbum = null;
+                dgvListe();
             }
+        }
+
+        private void Anasafa_Load(object sender, EventArgs e)
+        {
+            dgvAlbümler.DataSource = albumManager.GetAll();
+            cmbSanatci.DataSource = sanatciManager.GetAll();
+            cmbDurum.DataSource = Enum.GetNames(typeof(SatisDurum));
+            dgvListe();
+
+
+        }
+        private void RefreshCmbSanatci()
+        {
+            cmbSanatci.DataSource = sanatciManager.GetAll().Select(c => new KeyValuePair<int, string>(key: c.Id, value: c.Adi)).ToList();
+            cmbSanatci.DisplayMember = "value";
+            cmbSanatci.ValueMember = "key";
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            selectedDate = dateTimePicker1.Value.Date;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        
+        }
+
+        private void dgvListe()
+        {
+            var satisDurmus = (from a in albumManager.GetAll()
+                               join s in sanatciManager.GetAll() on a.SanatciId equals s.Id
+                               where a.SatisDurum == SatisDurum.Durdurulmus
+                               select new { a.AlbumAdi, s.Adi }).ToList();
+            dataGridView1.DataSource= satisDurmus;
+
+            var satisDevam = (from a in albumManager.GetAll()
+                              join s in sanatciManager.GetAll() on a.SanatciId equals s.Id
+                              where a.SatisDurum == SatisDurum.Durdurulmus
+                              select new { a.AlbumAdi, s.Adi });
+            dataGridView2.DataSource = satisDevam;
+            var enSonAlbum = (from a in albumManager.GetAll()
+                              join s in sanatciManager.GetAll() on a.SanatciId equals s.Id
+                              orderby a.CreatedDate descending
+
+                              select new { a.AlbumAdi, s.Adi, a.CreatedDate });
+            enSonAlbum.Take(10);
+            dataGridView3.DataSource = enSonAlbum;
+
+            var enSonIndirim = (from a in albumManager.GetAll()
+                                join s in sanatciManager.GetAll() on a.SanatciId equals s.Id
+                                orderby a.indirim descending
+                                select new { a.AlbumAdi, s.Adi, a.indirim });
+            dataGridView4.DataSource = enSonIndirim;
         }
     }
 

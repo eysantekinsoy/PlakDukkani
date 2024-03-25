@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,14 @@ namespace Uygulama.DAL.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<PersonMeal>().Ignore(pm => pm.Id);
-            //modelBuilder.Entity<PersonMeal>().HasKey(pm => new { pm.PersonId, pm.MealId, pm.CreatedDate });
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Sanatci>().HasData
+                (
+                new Sanatci() { Id = 1 ,Adi = "Barış Manço", CreatedDate = DateTime.Now },
+                new Sanatci() { Id = 2, Adi = "Barış Akarsu", CreatedDate = DateTime.Now },
+                new Sanatci() { Id = 3 ,Adi = "Sıla", CreatedDate = DateTime.Now }
+
+                );
         }
     }
 }

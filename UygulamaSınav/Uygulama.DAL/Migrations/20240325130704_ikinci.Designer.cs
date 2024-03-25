@@ -12,8 +12,8 @@ using Uygulama.DAL.Context;
 namespace Uygulama.DAL.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    [Migration("20240325130150_ilk")]
-    partial class ilk
+    [Migration("20240325130704_ikinci")]
+    partial class ikinci
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,17 +61,12 @@ namespace Uygulama.DAL.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("albumId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("indirim")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SanatciId");
-
-                    b.HasIndex("albumId");
 
                     b.ToTable("Albums");
                 });
@@ -140,19 +135,13 @@ namespace Uygulama.DAL.Migrations
 
             modelBuilder.Entity("Uygulama.DAL.Entities.Album", b =>
                 {
-                    b.HasOne("Uygulama.DAL.Entities.Sanatci", null)
+                    b.HasOne("Uygulama.DAL.Entities.Sanatci", "Sanatci")
                         .WithMany("Albums")
                         .HasForeignKey("SanatciId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Uygulama.DAL.Entities.Album", "album")
-                        .WithMany()
-                        .HasForeignKey("albumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("album");
+                    b.Navigation("Sanatci");
                 });
 
             modelBuilder.Entity("Uygulama.DAL.Entities.Sanatci", b =>

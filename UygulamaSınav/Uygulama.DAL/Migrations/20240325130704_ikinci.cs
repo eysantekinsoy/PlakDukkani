@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Uygulama.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class ilk : Migration
+    public partial class ikinci : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,7 +55,6 @@ namespace Uygulama.DAL.Migrations
                     AlbumAdi = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AlbumCikisTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SanatciId = table.Column<int>(type: "int", nullable: false),
-                    albumId = table.Column<int>(type: "int", nullable: false),
                     Fiyati = table.Column<int>(type: "int", nullable: false),
                     indirim = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     SatisDurum = table.Column<int>(type: "int", nullable: false),
@@ -68,23 +67,12 @@ namespace Uygulama.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Albums", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Albums_Albums_albumId",
-                        column: x => x.albumId,
-                        principalTable: "Albums",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Albums_Sanatcis_SanatciId",
                         column: x => x.SanatciId,
                         principalTable: "Sanatcis",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Albums_albumId",
-                table: "Albums",
-                column: "albumId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Albums_SanatciId",

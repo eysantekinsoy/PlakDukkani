@@ -59,7 +59,8 @@ namespace Uygulama.DAL.Repository.Abstract
 
         public void Remove(T entity)
         {
-            //gerçekten silecek (tablodan silecek)
+            //gerçekten silecek (tablodan silecek
+            _db.Entry(entity).State = EntityState.Detached;
             entities.Remove(entity);
             _db.SaveChanges();
         }
@@ -87,7 +88,7 @@ namespace Uygulama.DAL.Repository.Abstract
 
                 entity.Status = Status.Updated;
             }
-            _db.Entry(entity).State = EntityState.Modified;
+            //_db.Entry(entity).State = EntityState.Modified;
 
             entities.Update(entity);
 

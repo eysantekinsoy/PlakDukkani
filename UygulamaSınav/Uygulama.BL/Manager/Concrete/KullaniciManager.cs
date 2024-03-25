@@ -20,6 +20,19 @@ namespace Uygulama.BL.Manager.Concrete
         {
             _repository = new KullaniciRepository(new UygulamaDbContext());
         }
+        public KullaniciModel? FindUser(string KullaniciAdi)
+        {
+            IKullaniciRepository repo = _repository as IKullaniciRepository;
+            Kullanici Kullanici = repo.FindUser(KullaniciAdi);
+            return _mapper.Map<KullaniciModel>(Kullanici);
+        }
+
+        public KullaniciModel? FindUser(string KullaniciAdi, string Password)
+        {
+            IKullaniciRepository repo = _repository as IKullaniciRepository;
+            Kullanici Kullanici = repo.FindUser(KullaniciAdi, Password);
+            return _mapper.Map<KullaniciModel>(Kullanici);
+        }
 
     }
 }

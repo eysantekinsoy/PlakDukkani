@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uygulama.DAL.Context;
 
@@ -11,9 +12,11 @@ using Uygulama.DAL.Context;
 namespace Uygulama.DAL.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    partial class UygulamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240325133533_ucunucu")]
+    partial class ucunucu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,29 +131,6 @@ namespace Uygulama.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sanatcis");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Adi = "Barış Manço",
-                            CreatedDate = new DateTime(2024, 3, 25, 16, 59, 22, 787, DateTimeKind.Local).AddTicks(5658),
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Adi = "Barış Akarsu",
-                            CreatedDate = new DateTime(2024, 3, 25, 16, 59, 22, 787, DateTimeKind.Local).AddTicks(5674),
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Adi = "Sıla",
-                            CreatedDate = new DateTime(2024, 3, 25, 16, 59, 22, 787, DateTimeKind.Local).AddTicks(5675),
-                            Status = 0
-                        });
                 });
 
             modelBuilder.Entity("Uygulama.DAL.Entities.Album", b =>
