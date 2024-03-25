@@ -9,7 +9,7 @@ using Uygulama.DAL.Repository.Abstract;
 
 namespace Uygulama.DAL.Repository.Concrete
 {
-    public class SanatciRepository : Repository<Album>
+    public class SanatciRepository : Repository<Sanatci>
     {
         public SanatciRepository(UygulamaDbContext db) : base(db)
         {

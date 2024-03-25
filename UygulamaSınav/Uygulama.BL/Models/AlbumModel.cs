@@ -14,11 +14,12 @@ namespace Uygulama.BL.Models
         public string AlbumAdi { get; set; }
         public DateTime AlbumCikisTarihi { get; set; }
         public int SanatciId { get; set; }
-        public Album album { get; set; }
+        public SanatciModel Sanatci { get; set; }
         public int Fiyati { get; set; }
         public decimal indirim { get; set; }
         public SatisDurum SatisDurum { get; set; }
         public Status Status { get; set; }
+        public DateTime CreatedDate { get; set; }
         public override string ToString()
         {
             return AlbumAdi;

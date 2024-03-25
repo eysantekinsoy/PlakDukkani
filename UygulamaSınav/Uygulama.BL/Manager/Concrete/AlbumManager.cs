@@ -19,11 +19,6 @@ namespace Uygulama.BL.Manager.Concrete
         {
             _repository = new AlbumRepository(new UygulamaDbContext());
         }
-        public AlbumModel? FindUser(string AlbumAdi)
-        {
-            IAlbumRepository repo = _repository as IAlbumRepository;
-            Album album = repo.FindUser(AlbumAdi);
-            return _mapper.Map<AlbumModel>(album);
-        }
+        
     }
 }

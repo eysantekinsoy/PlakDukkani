@@ -10,6 +10,6 @@ namespace Uygulama.DAL.Entities
     public class Sanatci : Entity
     {
         public string Adi { get; set; }
-        public List<Album> Albums { get; set; }
+        public List<Album>? Albums { get; set; }
     }
 }

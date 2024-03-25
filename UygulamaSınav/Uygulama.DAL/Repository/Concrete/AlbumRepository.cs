@@ -9,16 +9,13 @@ using Uygulama.DAL.Repository.Abstract;
 
 namespace Uygulama.DAL.Repository.Concrete
 {
-    public class AlbumRepository : Repository<Album>, IAlbumRepository
+    public class AlbumRepository : Repository<Album>
     {
         public AlbumRepository(UygulamaDbContext db) : base(db)
         {
 
         }
-        public Album FindUser(string AlbumAdi)
-        {
-            return entities.Where(p => p.AlbumAdi == AlbumAdi).SingleOrDefault();
-        }
+        
 
     }
 }

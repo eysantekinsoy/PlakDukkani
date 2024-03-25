@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Uygulama.DAL.Entities;
 
 namespace Uygulama.DAL.Context
 {
@@ -11,21 +13,23 @@ namespace Uygulama.DAL.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-SNI2HD0\\MSSQLSERVERYASN; Database=DiyetDB1;Trusted_Connection=true;trustservercertificate=true");
-            optionsBuilder.UseLazyLoadingProxies(true);
+            optionsBuilder.UseSqlServer("Server=ANK3-YZLMORT-15\\MSSQLSERVERANK16; Database=PlakDukkan;Trusted_Connection=true;trustservercertificate=true");
+            
         }
-        //public DbSet<Person> Persons { get; set; }
-        //public DbSet<Meal> Meals { get; set; }
-        //public DbSet<PersonMeal> PersonMeals { get; set; }
-        //public DbSet<MealTime> MealTimes { get; set; }
-        //public DbSet<Portion> Portions { get; set; }
-        //public DbSet<Category> Categories { get; set; }
+    public DbSet<Album> Albums { get; set; }
+    public DbSet<Sanatci> Sanatcis { get; set; }
+    public DbSet<Kullanici> Kullanicis { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<PersonMeal>().Ignore(pm => pm.Id);
-            //modelBuilder.Entity<PersonMeal>().HasKey(pm => new { pm.PersonId, pm.MealId, pm.CreatedDate });
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Sanatci>().HasData
+                (
+                new Sanatci() { Id = 1 ,Adi = "Barış Manço", CreatedDate = DateTime.Now },
+                new Sanatci() { Id = 2, Adi = "Barış Akarsu", CreatedDate = DateTime.Now },
+                new Sanatci() { Id = 3 ,Adi = "Sıla", CreatedDate = DateTime.Now }
+
+                );
         }
     }
 }

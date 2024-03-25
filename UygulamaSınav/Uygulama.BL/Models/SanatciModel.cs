@@ -9,7 +9,12 @@ namespace Uygulama.BL.Models
 {
     public class SanatciModel
     {
+        public int Id { get; set; }
         public string Adi { get; set; }
-        public List<Album> Albums { get; set; }
+        public List<AlbumModel>? Albums { get; set; }
+        public override string ToString()
+        {
+            return Adi;
+        }
     }
 }
