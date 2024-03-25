@@ -28,20 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			lstbox = new ListBox();
 			btnEkle = new Button();
 			btnSil = new Button();
 			btngnclle = new Button();
+			dgvAlbümler = new DataGridView();
+			btnListele = new Button();
+			((System.ComponentModel.ISupportInitialize)dgvAlbümler).BeginInit();
 			SuspendLayout();
-			// 
-			// lstbox
-			// 
-			lstbox.FormattingEnabled = true;
-			lstbox.ItemHeight = 15;
-			lstbox.Location = new Point(74, 87);
-			lstbox.Name = "lstbox";
-			lstbox.Size = new Size(675, 184);
-			lstbox.TabIndex = 0;
 			// 
 			// btnEkle
 			// 
@@ -70,6 +63,24 @@
 			btngnclle.Text = "Güncelle";
 			btngnclle.UseVisualStyleBackColor = true;
 			// 
+			// dgvAlbümler
+			// 
+			dgvAlbümler.BackgroundColor = Color.Beige;
+			dgvAlbümler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dgvAlbümler.Location = new Point(222, 73);
+			dgvAlbümler.Name = "dgvAlbümler";
+			dgvAlbümler.Size = new Size(402, 150);
+			dgvAlbümler.TabIndex = 4;
+			// 
+			// btnListele
+			// 
+			btnListele.Location = new Point(329, 373);
+			btnListele.Name = "btnListele";
+			btnListele.Size = new Size(202, 33);
+			btnListele.TabIndex = 5;
+			btnListele.Text = "Albümleri Listele";
+			btnListele.UseVisualStyleBackColor = true;
+			// 
 			// Anasafa
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -77,20 +88,22 @@
 			BackgroundImage = Properties.Resources.pexels_ylanite_koppens_934067;
 			BackgroundImageLayout = ImageLayout.Stretch;
 			ClientSize = new Size(800, 450);
+			Controls.Add(btnListele);
+			Controls.Add(dgvAlbümler);
 			Controls.Add(btngnclle);
 			Controls.Add(btnSil);
 			Controls.Add(btnEkle);
-			Controls.Add(lstbox);
 			Name = "Anasafa";
 			Text = "Anasafa";
+			((System.ComponentModel.ISupportInitialize)dgvAlbümler).EndInit();
 			ResumeLayout(false);
 		}
 
 		#endregion
-
-		private ListBox lstbox;
 		private Button btnEkle;
 		private Button btnSil;
 		private Button btngnclle;
+		private DataGridView dgvAlbümler;
+		private Button btnListele;
 	}
 }
