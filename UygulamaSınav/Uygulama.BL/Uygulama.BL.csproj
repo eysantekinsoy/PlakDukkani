@@ -11,4 +11,8 @@
     <PackageReference Include="AutoMapper.Extensions.ExpressionMapping" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Uygulama.DAL\Uygulama.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
