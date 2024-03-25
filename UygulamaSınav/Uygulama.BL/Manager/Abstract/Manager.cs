@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Uygulama.DAL.Repository.Abstract;
 
 namespace Uygulama.BL.Manager.Abstract
 {    //hangileri arasında dönüşüm olacak?

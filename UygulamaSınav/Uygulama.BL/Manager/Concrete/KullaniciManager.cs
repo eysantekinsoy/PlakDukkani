@@ -18,7 +18,7 @@ namespace Uygulama.BL.Manager.Concrete
     {
         public KullaniciManager()
         {
-            _repository = new AlbumRepository(new UygulamaDbContext());
+            _repository = new KullaniciRepository(new UygulamaDbContext());
         }
 
     }
