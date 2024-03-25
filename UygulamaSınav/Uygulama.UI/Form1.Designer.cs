@@ -42,6 +42,7 @@
 			btngiris.TabIndex = 0;
 			btngiris.Text = "Gİriş Yap";
 			btngiris.UseVisualStyleBackColor = true;
+			btngiris.Click += btngiris_Click;
 			// 
 			// btnkayitol
 			// 
@@ -72,6 +73,8 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BackgroundImage = Properties.Resources.pexels_elviss_railijs_bitāns_1389429;
+			BackgroundImageLayout = ImageLayout.Stretch;
 			ClientSize = new Size(800, 450);
 			Controls.Add(txtbxKullaniciSifre);
 			Controls.Add(txtbxKullaniciAdi);
